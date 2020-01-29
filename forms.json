@@ -2,107 +2,100 @@
   {
     "title": "A smaple form",
     "id": "1",
-    "fields": [
+    "fields" : [
       {
-        "name": "First_Name",
-        "title": "First Name",
-        "type": "Text",
-        "required": true
-      },
+        "name":"First_Name" ,
+        "title" : "First Name" ,
+        "type" : "Text",
+        "required":true
+      } ,
       {
-        "name": "Loc",
-        "title": "Your Location",
-        "type": "Location",
-        "required": false
-      },
+        "name":"age" ,
+        "title" : "Age" ,
+        "type" : "Number",
+        "required":true
+      } ,
       {
-        "name": "Request_Type",
-        "title": "Request Type",
-        "type": "Text",
-        "options": [
-          {
-            "label": "Help",
-            "value": "Help"
-          },
-          {
-            "label": "Info",
-            "value": "Information"
-          }
+        "name":"date" ,
+        "title" : "Date" ,
+        "type" : "Date",
+        "required":true
+      } ,
+      {
+        "name":"Loc" ,
+        "title" : "Your Location" ,
+        "type" : "Location",
+        "required":false
+      } ,
+
+      {
+        "name":"Request_Type" ,
+        "title" : "Request Type" ,
+        "type" : "Text" ,
+        "required":false,
+        "options" : [
+          {"label" : "Help" , "value" : "Help"},
+          {"label" : "Info" , "value" : "Information"}
         ]
-      },
+      } ,
       {
-        "name": "Base_Location",
-        "title": "Base Location",
-        "type": "Location",
-        "options": [
-          {
-            "label": "Base1",
-            "value": {
-              "lat": "1.2",
-              "long": "3.2"
-            }
-          },
-          {
-            "label": "Base2",
-            "value": {
-              "lat": "2.3",
-              "long": "1.434"
-            }
-          }
+        "name":"Base_Location" ,
+        "title" : "Base Location" ,
+        "type" : "Location" ,
+        "required":false,
+        "options" : [
+          {"label" : "Base1" , "value" : {"lat" : "1.2" , "long": "3.2"}},
+          {"label" : "Base2" , "value" : {"lat" : "2.3" , "long" : "1.434" }}
         ]
       }
-    ]
-  },
+    ]   },
   {
     "title": "Second smaple form",
     "id": "2",
-    "fields": [
+    "fields" : [
       {
-        "name": "First_Name",
-        "title": "First Name",
-        "type": "Text",
-        "required": true
-      },
+        "name":"First_Name" ,
+        "title" : "First Name" ,
+        "type" : "Text",
+        "required":true
+      } ,
       {
-        "name": "Loc",
-        "title": "Your Location",
-        "type": "Location",
-        "required": false
-      },
+        "name":"age" ,
+        "title" : "Age" ,
+        "type" : "Number",
+        "required":true
+      } ,
       {
-        "name": "Request_Type",
-        "title": "Request Type",
-        "type": "Text",
-        "options": [
-          {
-            "label": "Help",
-            "value": "Help"
-          },
-          {
-            "label": "Info",
-            "value": "Information"
-          }
+        "name":"date" ,
+        "title" : "Date" ,
+        "type" : "Date",
+        "required":true
+      } ,
+      {
+        "name":"Loc" ,
+        "title" : "Your Location" ,
+        "type" : "Location",
+        "required":false
+      } ,
+
+      {
+        "name":"Request_Type" ,
+        "title" : "Request Type" ,
+        "type" : "Text" ,
+        "required":false,
+        "options" : [
+          {"label" : "Help" , "value" : "Help"},
+          {"label" : "Info" , "value" : "Information"}
         ]
-      },
+      } ,
       {
-        "name": "Base_Location",
-        "title": "Base Location",
-        "type": "Location",
-        "options": [
-          {
-            "label": "Base1",
-            "value": {
-              "lat": "1.2",
-              "long": "3.2"
-            }
-          },
-          {
-            "label": "Base2",
-            "value": {
-              "lat": "2.3",
-              "long": "1.434"
-            }
-          }
+        "name":"Base_Location" ,
+        "title" : "Base Location" ,
+        "type" : "Location" ,
+        "required":false,
+        "options" : [
+          {"label" : "Base1" , "value" : {"lat" : "1.2" , "long": "3.2"}},
+          {"label" : "Base2" , "value" : {"lat" : "2.3" , "long" : "1.434" }}
         ]
       }
     ]
@@ -110,53 +103,50 @@
   {
     "title": "Third smaple form",
     "id": "3",
-    "fields": [
+    "fields" : [
       {
-        "name": "First_Name",
-        "title": "First Name",
-        "type": "Text",
-        "required": true
-      },
+        "name":"First_Name" ,
+        "title" : "First Name" ,
+        "type" : "Text",
+        "required":true
+      } ,
       {
-        "name": "Loc",
-        "title": "Your Location",
-        "type": "Location",
-        "required": false
-      },
+        "name":"age" ,
+        "title" : "Age" ,
+        "type" : "Number",
+        "required":true
+      } ,
       {
-        "name": "Request_Type",
-        "title": "Request Type",
-        "type": "Text",
-        "options": [
-          {
-            "label": "Help",
-            "value": "Help"
-          },
-          {
-            "label": "Info",
-            "value": "Information"
-          }
+        "name":"date" ,
+        "title" : "Date" ,
+        "type" : "Date",
+        "required":true
+      } ,
+      {
+        "name":"Loc" ,
+        "title" : "Your Location" ,
+        "type" : "Location",
+        "required":false
+      } ,
+
+      {
+        "name":"Request_Type" ,
+        "title" : "Request Type" ,
+        "type" : "Text" ,
+        "required":false,
+        "options" : [
+          {"label" : "Help" , "value" : "Help"},
+          {"label" : "Info" , "value" : "Information"}
         ]
-      },
+      } ,
       {
-        "name": "Base_Location",
-        "title": "Base Location",
-        "type": "Location",
-        "options": [
-          {
-            "label": "Base1",
-            "value": {
-              "lat": "1.2",
-              "long": "3.2"
-            }
-          },
-          {
-            "label": "Base2",
-            "value": {
-              "lat": "2.3",
-              "long": "1.434"
-            }
-          }
+        "name":"Base_Location" ,
+        "title" : "Base Location" ,
+        "type" : "Location" ,
+        "required":false,
+        "options" : [
+          {"label" : "Base1" , "value" : {"lat" : "1.2" , "long": "3.2"}},
+          {"label" : "Base2" , "value" : {"lat" : "2.3" , "long" : "1.434" }}
         ]
       }
     ]
