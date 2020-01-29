@@ -53,32 +53,32 @@ router.get('/api/forms/:id/show', function (req, res, next) {
 /* GET home page. */
 router.post('/api/forms/:id', function (req, res, next) {
   console.log(req.body);
-  forms.features.push(req.body);
-  let fs = require('fs');
-  let wr = JSON.stringify(data);
-  fs.writeFile("data.json", wr, 'utf8', function(err) {
-    if(err) {
-      return console.log(err);
-    }
-    console.log("The form data was saved!");
-  });
+  // forms.features.push(req.body);
+  // let fs = require('fs');
+  // let wr = JSON.stringify(data);
+  // fs.writeFile("data.json", wr, 'utf8', function(err) {
+  //   if(err) {
+  //     return console.log(err);
+  //   }
+  //   console.log("The form data was saved!");
+  // });
 
   res.json(req.body);
 });
 
-router.post('/api/forms/:id', function (req, res, next) {
-  console.log(req.body);
-  forms.features.push(req.body);
-  let fs = require('fs');
-  let wr = JSON.stringify(data);
-  fs.writeFile("data.json", wr, 'utf8', function(err) {
-    if(err) {
-      return console.log(err);
-    }
-    console.log("The form data was saved!");
-  });
-
-  res.json(req.body);
-});
+// router.post('/api/forms/:id', function (req, res, next) {
+//   console.log(req.body);
+//   forms.features.push(req.body);
+//   let fs = require('fs');
+//   let wr = JSON.stringify(data);
+//   fs.writeFile("data.json", wr, 'utf8', function(err) {
+//     if(err) {
+//       return console.log(err);
+//     }
+//     console.log("The form data was saved!");
+//   });
+//
+//   res.json(req.body);
+// });
 
 module.exports = router;
