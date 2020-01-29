@@ -12,13 +12,13 @@ let result = [];
 // router.use(router.bodyParser());
 /* GET home page. */
 router.get('/api/forms', function (req, res, next) {
-  result = [];
+  result = { forms:[]};
   for (let i = 0; i < forms.length; i++) {
     let item = {
       id: forms[i].id,
       title: forms[i].title
     }
-    result.push(item)
+    result.forms.push(item)
     // res.json(result)
   }
   res.send(result)
