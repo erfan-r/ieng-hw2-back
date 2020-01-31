@@ -42,7 +42,7 @@ router.get('/api/forms/:id/list/:sId', function (req, res, next) {
 
 //TODO Fill this function
 router.delete('/api/forms/:id/list/:sId', function (req, res, next) {
-  res.text("ok")
+  res.json({"result":"ok"})
 });
 
 router.get('/api/forms/:id/list', function (req, res, next) {
