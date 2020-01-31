@@ -46,6 +46,12 @@
           {"label" : "Base1" , "value" : {"lat" : "1.2" , "long": "3.2"}},
           {"label" : "Base2" , "value" : {"lat" : "2.3" , "long" : "1.434" }}
         ]
+      },
+      {
+        "name": "Date_Name",
+        "title": "Date Name",
+        "type": "Date",
+        "required": false
       }
     ]   },
   {

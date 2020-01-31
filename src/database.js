@@ -8,11 +8,12 @@ class Database {
     constructor() {
         this._connect()
     }
-  // mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true})
-  // mongoose.connect(`mongodb://${server_address}/${database_name}`, { useNewUrlParser: true, useUnifiedTopology: true})
+
+    // mongoose.connect(`mongodb://${server_address}/${database_name}`, { useNewUrlParser: true, useUnifiedTopology: true})
 
     _connect() {
-        mongoose.connect(`mongodb://${server_address}/${database_name}`, { useNewUrlParser: true, useUnifiedTopology: true})
+        mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true})
+            //     mongoose.connect(`mongodb://${server_address}/${database_name}`, { useNewUrlParser: true, useUnifiedTopology: true})
             .then(() => {
                 console.log('Database connection made.')
             })
