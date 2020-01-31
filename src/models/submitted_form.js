@@ -1,13 +1,11 @@
 var mongoose = require('mongoose')
 var database = require('../database')
-
+var field = require('../models/field')
 const submittedSchema = new mongoose.Schema({
-  form_id : Number,
-  title : String,
-  type : String,
-  value : String,
+  username : String,
+  fields : [field.schema]
 })
 
-const SubmittedForm = mongoose.model('SubmittedForm', fieldSchema)
+const SubmittedForm = mongoose.model('SubmittedForm', submittedSchema)
 
 module.exports = SubmittedForm;

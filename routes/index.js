@@ -1,8 +1,11 @@
 var express = require('express');
-var forms = require('../forms.json');
 var router = express.Router();
 var bodyParser = require('body-parser');
-console.log(forms.features)
+
+var form = require('../src/models/form')
+var field = require('../src/models/field')
+var submitted_form = require('../src/models/submitted_form')
+
 // parse application/x-www-form-urlencoded
 router.use(bodyParser.urlencoded({ extended: false }));
 
@@ -12,73 +15,72 @@ let result = [];
 // router.use(router.bodyParser());
 /* GET home page. */
 router.get('/api/forms', function (req, res, next) {
-  result = { forms:[]};
-  for (let i = 0; i < forms.length; i++) {
-    let item = {
-      id: forms[i].id,
-      title: forms[i].title
-    }
-    result.forms.push(item)
-    // res.json(result)
-  }
-  res.send(result)
-  // res.render('index', {title: 'Express'});
+  form.find({},'_id title ', function(err, forms) {
+    console.log('GOTchaaaaa')
+    // users.forEach(function(user) {
+    //   userMap[user._id] = user;
+    // });
+    res.json(forms);
+  });
 
 });
 router.get('/api/forms/:id', function (req, res, next) {
   result = {};
-  console.log(req)
-  for (let i = 0; i < forms.length; i++) {
-    if (forms[i].id === req.params.id)
-      result = forms[i]
-    // res.json(result)
-  }
-  res.send(result)
-  // res.render('index', {title: 'Express'});
+  form.findById(req.params.id, async function (err, form) {
+    res.json(form)
+  });
 
 });
 
-router.get('/api/forms/:id/show', function (req, res, next) {
+router.get('/api/forms/:id/list/:sId', function (req, res, next) {
+  result = {};
+  console.log(req.params.sId)
+  submitted_form.findById(req.params.sId, function (err, form) {
+    res.json(form)
+  });
+});
+
+router.get('/api/forms/:id/list', function (req, res, next) {
   result = {};
   console.log(req)
-  for (let i = 0; i < forms.length; i++) {
-    if (forms[i].id === req.params.id)
-      result = forms[i]
-    // res.json(result)
-  }
-  res.send(result)
-  // res.render('index', {title: 'Express'});
+  form.findById(req.params.id, function (err, form) {
+    res.json(form.submitted_forms)
+  });
 });
-
 /* GET home page. */
-router.post('/api/forms/:id', function (req, res, next) {
-  console.log(req.body);
-  // forms.features.push(req.body);
-  // let fs = require('fs');
-  // let wr = JSON.stringify(data);
-  // fs.writeFile("data.json", wr, 'utf8', function(err) {
-  //   if(err) {
-  //     return console.log(err);
-  //   }
-  //   console.log("The form data was saved!");
-  // });
-
-  res.json(req.body);
+router.post('/api/forms/:id', async function (req, res, next) {
+  // console.log(req.body);
+  await form.findById(req.params.id, function (err, form) {
+    console.log(form)
+    if (err) {
+      console.error(err)
+    }
+    else {
+      let tmp_fields = []
+      let sf = new submitted_form({username: req.body.username, fields: []})
+      for (let i = 0; i< req.body.fields.length; i++) {
+        let tmp = req.body.fields[i]
+        if (tmp.Type === "Loc")
+          tmp.Value = "Tehran" // TODO: add point in polygon things here
+        sf.fields.push(new field({name: tmp.Name, title: tmp.Title, type: tmp.Type, value: tmp.Value}))
+      }
+      sf.save()
+      form.submitted_forms.push(sf)
+      form.save()
+      res.json(form)
+    }
+  });
 });
 
-// router.post('/api/forms/:id', function (req, res, next) {
-//   console.log(req.body);
-//   forms.features.push(req.body);
-//   let fs = require('fs');
-//   let wr = JSON.stringify(data);
-//   fs.writeFile("data.json", wr, 'utf8', function(err) {
-//     if(err) {
-//       return console.log(err);
-//     }
-//     console.log("The form data was saved!");
-//   });
-//
-//   res.json(req.body);
-// });
+router.post('/api/forms', function (req, res, next) {
+  // console.log(req.body);
+  new_form = new form({title: req.body.title, fields: [], submitted_forms: []})
+  for (let i = 0; i< req.body.fields.length; i++) {
+    let tmp = req.body.fields[i]
+    new_form.fields.push(new field({name: tmp.name, title: tmp.title, type: tmp.type, required: tmp.required}))
+  }
+  new_form.save()
+  res.json(new_form.fields);
+});
 
 module.exports = router;
