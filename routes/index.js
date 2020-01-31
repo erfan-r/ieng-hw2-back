@@ -20,7 +20,7 @@ router.get('/api/forms', function (req, res, next) {
     // users.forEach(function(user) {
     //   userMap[user._id] = user;
     // });
-    res.json(forms);
+    res.json({"forms": forms});
   });
 
 });
