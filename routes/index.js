@@ -57,7 +57,7 @@ router.get('/api/forms/:id/list/:sId', auth, async function (req, res, next) {
 
 })
 
-router.get('/api/forms/:id/list/:sId/csv', auth, async function (req, res, next) {
+router.get('/api/forms/:id/list/:sId/csv', async function (req, res, next) {
   const user = await User.findById(req.user._id).select('-password')
   if (user.isAdmin) {
     result = {}
