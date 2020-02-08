@@ -24,7 +24,7 @@ let result = []
 //   res.send(user);
 // });
 
-router.get('/api/forms', auth, function (req, res, next) {
+router.get('/forms', auth, function (req, res, next) {
   form.find({}, '_id title ', function (err, forms) {
     console.log('GOTchaaaaa')
     // users.forEach(function(user) {
@@ -35,7 +35,7 @@ router.get('/api/forms', auth, function (req, res, next) {
   })
 
 })
-router.get('/api/forms/:id', auth, function (req, res, next) {
+router.get('/forms/:id', auth, function (req, res, next) {
   result = {}
   form.findById(req.params.id, async function (err, form) {
     res.json(form)
@@ -43,7 +43,7 @@ router.get('/api/forms/:id', auth, function (req, res, next) {
 
 })
 
-router.get('/api/forms/:id/list/:sId', auth, async function (req, res, next) {
+router.get('/forms/:id/list/:sId', auth, async function (req, res, next) {
   const user = await User.findById(req.user._id).select('-password')
   if (user.isAdmin) {
     result = {}
@@ -57,7 +57,7 @@ router.get('/api/forms/:id/list/:sId', auth, async function (req, res, next) {
 
 })
 
-router.get('/api/forms/:id/list/:sId/csv', async function (req, res, next) {
+router.get('/forms/:id/list/:sId/csv', async function (req, res, next) {
   const user = await User.findById(req.user._id).select('-password')
   if (user.isAdmin) {
     result = {}
@@ -75,7 +75,7 @@ router.get('/api/forms/:id/list/:sId/csv', async function (req, res, next) {
 
 
 //TODO Fill this function
-router.delete('/api/forms/:id/list/:sId', auth, async function (req, res, next) {
+router.delete('/forms/:id/list/:sId', auth, async function (req, res, next) {
   const user = await User.findById(req.user._id).select('-password')
   if (user.isAdmin) {
     res.json({'result': 'ok'})
@@ -84,7 +84,7 @@ router.delete('/api/forms/:id/list/:sId', auth, async function (req, res, next) 
   }
 })
 
-router.get('/api/forms/:id/list', auth, async function (req, res, next) {
+router.get('/forms/:id/list', auth, async function (req, res, next) {
   const user = await User.findById(req.user._id).select('-password')
   if (user.isAdmin) {
     result = {}
@@ -97,7 +97,7 @@ router.get('/api/forms/:id/list', auth, async function (req, res, next) {
   }
 })
 /* GET home page. */
-router.post('/api/forms/:id', auth, async function (req, res, next) {
+router.post('/forms/:id', auth, async function (req, res, next) {
   // console.log(req.body);
   await form.findById(req.params.id, function (err, form) {
     console.log(form)
@@ -130,7 +130,7 @@ router.post('/api/forms/:id', auth, async function (req, res, next) {
   })
 })
 
-router.post('/api/forms', auth, function (req, res, next) {
+router.post('/forms', auth, function (req, res, next) {
   // console.log(req.body);
   new_form = new form({title: req.body.title, fields: [], submitted_forms: []})
   for (let i = 0; i < req.body.fields.length; i++) {
@@ -143,7 +143,7 @@ router.post('/api/forms', auth, function (req, res, next) {
 
 
 // GeoJson
-router.get('/api/gis/testpoint', function (req, res, next) {
+router.get('/gis/testpoint', function (req, res, next) {
   result = ''
   for (let i = 0; i < map.features.length; i++) {
     console.log(req.query.lat)
@@ -155,7 +155,7 @@ router.get('/api/gis/testpoint', function (req, res, next) {
   }
 })
 
-router.put('/api/gis/addpolygon', function (req, res, next) {
+router.put('/gis/addpolygon', function (req, res, next) {
   console.log(req.body)
   map.features.push(req.body)
   let fs = require('fs')
