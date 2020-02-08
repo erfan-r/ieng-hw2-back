@@ -63,9 +63,9 @@ router.get('/api/forms/:id/list/:sId/csv', async function (req, res, next) {
     result = {}
     console.log(req.params.sId)
     submitted_form.findById(req.params.sId, function (err, form) {
-      csv2jsonAsync(form, {})
-        .then((result) => { res.send(result) })
-        .catch((err) => { next(createError(500))});
+      converter.json2csv(form , function (err, csv){
+        res.send(csv)
+      })
     })
   } else {
     next(createError(403))

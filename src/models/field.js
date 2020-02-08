@@ -6,6 +6,7 @@ const fieldSchema = new mongoose.Schema({
     title : String,
     type : String,
     required : Boolean,
+    options : [{label: String, value: {}}],
     value : String
 
 })
